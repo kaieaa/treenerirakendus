@@ -1,17 +1,19 @@
 import API from '../util/ApiUtil';
+import { LoginStore } from './LoginStore';
+import { RootStore } from './RootStore';
 
 export class ExercisesStore {
 
   public status = 'FETCHING';
   public loginData: any = {};
   public user: any;
-/*
+
   private loginStore: LoginStore;
 
   public constructor(rootStore: RootStore) {
      this.loginStore = rootStore.loginStore
      this.user = this.loginStore.user.id;
-  };*/
+  };
 
   public exercises = async (name: string) => { //Ajutine, ei tööta.
     try {

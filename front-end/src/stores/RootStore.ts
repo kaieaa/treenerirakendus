@@ -13,6 +13,6 @@ export class RootStore {
     this.loginStore = new LoginStore();
     this.registerStore = new RegisterStore();
     this.studentsStore = new StudentsStore();
-    this.exercisesStore = new ExercisesStore();
+    this.exercisesStore = new ExercisesStore(this);
   }
 }
