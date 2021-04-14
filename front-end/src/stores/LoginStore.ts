@@ -5,7 +5,7 @@ export class LoginStore {
   public status = 'FETCHING';
   public user: any;
 
- /*public constructor() {
+ public constructor() {
     this.fetchSession();
     }
     private fetchSession = async () => {
@@ -16,7 +16,7 @@ export class LoginStore {
       this.user = null;
       window.location.assign('/login');
       }
-    }*/
+    }
 
   public login = async (email: string, password: string) => {
     try {
