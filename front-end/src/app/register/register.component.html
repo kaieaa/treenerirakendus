@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Personaaltreeneri haldusrakendus</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</head>
+<body class="text-center">
+<main class="form-signin">
+    <div *ngIf="error">
+      <p>Registreerimisel tekkis viga, kontrolli parooli või kasutajat</p>
+      </div>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <h1 class="h3 mb-3 fw-normal">Loo uus konto</h1><br>
+    <label for="firstName" class="visually-hidden">E-mail</label>
+    <input type="text" formControlName="firstName" class="form-control" placeholder="Sisesta eesnimi" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+      <div *ngIf="f.firstName.errors.required">Eesnimi on kohustuslik väli</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName" class="visually-hidden">Sisesta perenimi</label>
+    <input type="lastName" formControlName="lastName" class="form-control" placeholder="Sisesta perenimi" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+      <div *ngIf="f.lastName.errors.required">Perenimi on kohustuslik väli</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="visually-hidden">Parool</label>
+    <input type="email" formControlName="email" class="form-control" placeholder="Sisesta e-maili aadress" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required">E-mail on kohustuslik väli</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="visually-hidden">Parool</label>
+    <input type="password" formControlName="password" class="form-control" placeholder="Sisesta parool" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Parool on kohustuslik väli</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="w-100 btn btn-md btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Salvesta
+    </button>
+    <br><br>
+    <h5 class="h5 mb-3 fw-normal">Kasutaja juba olemas? Logi sisse:</h5>
+    <a routerLink="/login" class="w-60 btn btn-sm btn-outline-primary">Logi sisse</a>
+  </div>
+</form>
+</main>
+</body>
+</html>

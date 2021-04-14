@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Personaaltreeneri haldusrakendus</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</head>
+<body class="text-center">
+  <div class="container-xl">
+<main class="form-signin">
+    <div *ngIf="error">
+      <p>Sisselogimisel tekkis viga, kontrolli parooli või kasutajat</p>
+      </div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <h1 class="h3 mb-3 fw-normal">PERSONAALTREENERI HALDUSRAKENDUS</h1><br>
+    <label for="username" class="visually-hidden">E-mail</label>
+    <input type="text" formControlName="username" class="form-control" placeholder="E-maili aadress" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+      <div *ngIf="f.username.errors.required">E-mail on kohustuslik väli</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="visually-hidden">Parool</label>
+    <input type="password" formControlName="password" class="form-control" placeholder="Parool" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Parool on kohustuslik väli</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="w-100 btn btn-md btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Logi sisse
+    </button>
+    <a routerLink="/register" class="w-100 btn btn-md btn-outline-primary">Register</a>
+  </div>
+</form>
+</main>
+</div>
+</body>
+</html>
