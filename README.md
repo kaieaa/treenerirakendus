@@ -1,0 +1,2 @@
+# treenerirakendus
+Personaaltreeneri haldusrakendus
