@@ -3,7 +3,6 @@ import { LoginStore } from './LoginStore';
 import { RootStore } from './RootStore';
 
 export class ExercisesStore {
-
   public status = 'FETCHING';
   public loginData: any = {};
   public user: any;
@@ -11,13 +10,14 @@ export class ExercisesStore {
   private loginStore: LoginStore;
 
   public constructor(rootStore: RootStore) {
-     this.loginStore = rootStore.loginStore;
-     this.user = this.loginStore.user.id;
-  };
+    this.loginStore = rootStore.loginStore;
+    this.user = this.loginStore.user.id;
+  }
 
-  public exercises = async (name: string) => { //Ajutine, ei tööta.
+  public exercises = async (name: string) => {
+    //Ajutine, ei tööta.
     try {
-      const response = await API.post('/login', {name});
+      const response = await API.post('/login', { name });
       this.user = response.data.user;
       this.status = 'FETCHED';
       return true;
@@ -27,11 +27,32 @@ export class ExercisesStore {
       this.status = 'ERROR';
       return false;
     }
-  }
-  public addExercise = async (userId: number, desc: string, defaultSeries: string, defaultReps: string, defaultRepsType: string, defaultEquip: string, defaultWeight: string, video1: string, video2: string, comment: string) => {
+  };
+  public addExercise = async (
+    userId: number,
+    desc: string,
+    defaultSeries: string,
+    defaultReps: string,
+    defaultRepsType: string,
+    defaultEquip: string,
+    defaultWeight: string,
+    video1: string,
+    video2: string,
+    comment: string
+  ) => {
     try {
       userId = this.user;
-      const response = await API.post('/exercises', {desc, defaultSeries, defaultReps, defaultRepsType, defaultEquip, defaultWeight, video1, video2, comment});
+      const response = await API.post('/exercises', {
+        desc,
+        defaultSeries,
+        defaultReps,
+        defaultRepsType,
+        defaultEquip,
+        defaultWeight,
+        video1,
+        video2,
+        comment,
+      });
       this.status = 'FETCHED';
       return true;
     } catch (e) {
@@ -40,18 +61,18 @@ export class ExercisesStore {
       this.status = 'ERROR';
       return false;
     }
-  }
-public readExercises = async (name: string, desc: string) => {
-  try {
-    const response = await API.get('/exercises', {params: {name, desc}});
-    this.user = response.data.user;
-    this.status = 'FETCHED';
-    return true;
-  } catch (e) {
-    console.error(e);
-    this.user = null;
-    this.status = 'ERROR';
-    return false;
-  }
+  };
+  public readExercises = async (name: string, desc: string) => {
+    try {
+      const response = await API.get('/exercises', { params: { name, desc } });
+      this.user = response.data.user;
+      this.status = 'FETCHED';
+      return true;
+    } catch (e) {
+      console.error(e);
+      this.user = null;
+      this.status = 'ERROR';
+      return false;
+    }
+  };
 }
-};

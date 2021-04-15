@@ -1,14 +1,23 @@
 import API from '../util/ApiUtil';
 
 export class RegisterStore {
-
   public status = 'FETCHING';
   public loginData: any = {};
   //public user: any;
 
-  public register = async (firstName: string, lastName: string, email: string, password: string) => {
+  public register = async (
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ) => {
     try {
-      const response = await API.post('/users', {firstName, lastName, email, password});
+      const response = await API.post('/users', {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
       //this.user = response.data.user;
       this.status = 'FETCHED';
       return true;
@@ -18,5 +27,5 @@ export class RegisterStore {
       this.status = 'ERROR';
       return false;
     }
-  }
+  };
 }

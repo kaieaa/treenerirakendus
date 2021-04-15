@@ -1,12 +1,16 @@
 import API from '../util/ApiUtil';
 
 export class StudentsStore {
-
   public status = 'FETCHING';
   public loginData: any = {};
   public user: any;
 
-  public students = async (firstName: string, lastName: string, email: string, phone: string) => {
+  public students = async (
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string
+  ) => {
     try {
       const response = await API.get('/students');
       this.user = response.data.user;
@@ -18,5 +22,5 @@ export class StudentsStore {
       this.status = 'ERROR';
       return false;
     }
-  }
+  };
 }

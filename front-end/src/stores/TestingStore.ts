@@ -1,14 +1,20 @@
 import API from '../util/ApiUtil';
 
 export class TestingStore {
-
   public status = 'FETCHING';
   public userData: any = {};
   public testValues: any;
 
-  public testing = async (id: number, firstName: string, lastName: string, email: string) => {
+  public testing = async (
+    id: number,
+    firstName: string,
+    lastName: string,
+    email: string
+  ) => {
     try {
-      const response = await API.get('/users', {params: {id, firstName, lastName, email}});
+      const response = await API.get('/users', {
+        params: { id, firstName, lastName, email },
+      });
       //this.user = response.data.user;
       this.testValues = response.data;
       console.log(response.data);
@@ -24,5 +30,5 @@ export class TestingStore {
       this.status = 'ERROR';
       return false;
     }
-  }
+  };
 }
