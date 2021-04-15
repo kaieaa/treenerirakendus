@@ -1,35 +1,36 @@
-import { Component, Input } from '@angular/core';
-import { LoginStore } from '../../stores/LoginStore';
+import { Component } from '@angular/core';
 import API from '../../util/ApiUtil';
+import { TestingStore } from '../../stores/TestingStore';
+import { RootStore } from '../../stores/RootStore';
+
+export interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 @Component({
   selector: 'app-content',
-  providers: [LoginStore],
   templateUrl: './random.component.html',
-  styleUrls: ['./random.component.css']
 })
-
-
 export class RandomComponent {
+  public users: User[] = [];
 
-  public someArray = [1, 2, 3];
-  public someValues = ['Malle', 'Kalle', 'Liisa'];
-  public newValues: any = [];
+  public testingStore: TestingStore;
 
-  public values: any;
+  constructor(rootStore: RootStore) {
+    this.testingStore = rootStore.testingStore;
+  }
 
-  public fetchOnClick = async () => {
+  async ngOnInit(): Promise<void> {}
+
+  /*public fetchData = async () => {
     try {
       const response = await API.get('/users');
-      this.values = response.data;
-      //console.log(response.data);
-      const newValues = this.values;
-      //console.log(this.values);
-      console.log(newValues);
+      this.users = response.data.users;
     } catch (e) {
       console.error(e);
     }
-  }
-
-
+  }*/
 }
