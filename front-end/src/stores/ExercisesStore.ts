@@ -11,7 +11,7 @@ export class ExercisesStore {
 
   public constructor(rootStore: RootStore) {
     this.loginStore = rootStore.loginStore;
-    this.user = this.loginStore.user.id;
+    this.user = this.loginStore.user?.id;
   }
 
   public exercises = async (name: string) => {
@@ -62,7 +62,7 @@ export class ExercisesStore {
       return false;
     }
   };
-  public readExercises = async (name: string, desc: string) => {
+  public readExecises = async (name: string, desc: string) => {
     try {
       const response = await API.get('/exercises', { params: { name, desc } });
       this.user = response.data.user;
