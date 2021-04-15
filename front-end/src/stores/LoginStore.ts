@@ -7,10 +7,11 @@ export class LoginStore {
   public constructor() {
     this.fetchSession();
   }
-  private fetchSession = async () => {
+  public fetchSession = async () => {
     try {
       const response = await API.get('/session');
       this.user = response.data;
+      console.log(this.user);
     } catch (e) {
       this.user = null;
       //window.location.assign('/login');
