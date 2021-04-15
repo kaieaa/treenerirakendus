@@ -1,72 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
     <title>Personaaltreeneri haldusrakendus</title>
 
-    <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
-    />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
     <!-- Bootstrap core CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="container-xl">
-        <div *ngIf="error">
-          <p>
-            Harjutuse lisamisel tekkis viga, kontrolli parooli või kasutajat
-          </p>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="container-xl">
+      <div *ngIf="error">
+        <p>Harjutuse lisamisel tekkis viga, kontrolli parooli või kasutajat</p>
         </div>
-        <form [formGroup]="exercisesForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <h3 class="h3 mb-3 fw-normal">Lisa uus harjutus</h3>
-            <br />
-            <label for="name" class="visually-hidden">Harjutuse nimi</label>
-            <input
-              type="text"
-              formControlName="name"
-              class="form-control"
-              placeholder="Sisesta harjutuse nimi"
-              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
-            />
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-              <div *ngIf="f.name.errors.required">Nimi on kohustuslik väli</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <button [disabled]="loading" class="w-100 btn btn-md btn-primary">
-              <span
-                *ngIf="loading"
-                class="spinner-border spinner-border-sm mr-1"
-              ></span>
-              Salvesta
-            </button>
-          </div>
-        </form>
-        <!--Harjutuste nimekiri -->
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-        >
-          <h1 class="h3 mb-3 fw-normal">Harjutused</h1>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2"></div>
-          </div>
+  <form [formGroup]="exercisesForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h3 class="h3 mb-3 fw-normal">Lisa uus harjutus</h3><br>
+      <label for="name" class="visually-hidden">Harjutuse nimi</label>
+      <input type="text" formControlName="name" class="form-control" placeholder="Sisesta harjutuse nimi" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Nimi on kohustuslik väli</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="w-100 btn btn-md btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Salvesta
+      </button>
+      </div>
+    </form>
+  <!--Harjutuste nimekiri -->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h3 mb-3 fw-normal">Harjutused</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
         </div>
       </div>
-    </main>
-  </body>
+    </div>
+  </div>
+</main>
+</body>
 </html>
