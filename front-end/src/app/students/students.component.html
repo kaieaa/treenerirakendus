@@ -117,22 +117,43 @@
           <h3 class="h3 mb-3 fw-normal">Kliendid</h3>
           <br />
 
-          <table>
-            <tr>
-              <th>id</th>
-              <th>eesnimi</th>
-              <th>perenimi</th>
-              <th>email</th>
-              <th>telefon</th>
-            </tr>
-            <tr *ngFor="let student of studentsStore.students">
-              <td>{{ student.id }}</td>
-              <td>{{ student.firstName }}</td>
-              <td>{{ student.lastName }}</td>
-              <td>{{ student.email }}</td>
-              <td>{{ student.phone }}</td>
-            </tr>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>id</th>
+                  <th>eesnimi</th>
+                  <th>perenimi</th>
+                  <th>email</th>
+                  <th>telefon</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let student of studentsStore.students">
+                <td>{{ student.id }}</td>
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.phone }}</td>
+                <td>
+                  <a
+                    href=""
+                    class="btn btn-outline-primary btn-sm"
+                    role="button"
+                    >Muuda</a
+                  >
+                </td>
+                <td>
+                  <a
+                    class="btn btn-outline-danger btn-sm"
+                    href=""
+                    onclick="return confirm('Kas oled kindel?')"
+                    role="button"
+                    >Kustuta</a
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </main>
