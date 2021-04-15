@@ -11,7 +11,7 @@ export class ExercisesStore {
   private loginStore: LoginStore;
 
   public constructor(rootStore: RootStore) {
-     this.loginStore = rootStore.loginStore
+     this.loginStore = rootStore.loginStore;
      this.user = this.loginStore.user.id;
   };
 
@@ -28,7 +28,7 @@ export class ExercisesStore {
       return false;
     }
   }
-  public addExecise = async (userId: number, desc: string, defaultSeries: string, defaultReps: string, defaultRepsType: string, defaultEquip: string, defaultWeight: string, video1: string, video2: string, comment: string) => {
+  public addExercise = async (userId: number, desc: string, defaultSeries: string, defaultReps: string, defaultRepsType: string, defaultEquip: string, defaultWeight: string, video1: string, video2: string, comment: string) => {
     try {
       userId = this.user;
       const response = await API.post('/exercises', {desc, defaultSeries, defaultReps, defaultRepsType, defaultEquip, defaultWeight, video1, video2, comment});
@@ -41,7 +41,7 @@ export class ExercisesStore {
       return false;
     }
   }
-public readExecises = async (name: string, desc: string) => {
+public readExercises = async (name: string, desc: string) => {
   try {
     const response = await API.get('/exercises', {params: {name, desc}});
     this.user = response.data.user;
