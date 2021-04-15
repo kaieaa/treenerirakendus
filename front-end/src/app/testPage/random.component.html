@@ -19,9 +19,13 @@
       <h3 class="h3 mb-3 fw-normal">Rakenduse kirjeldus</h3><br>
 
   <button (click)="fetchOnClick()">Clicki siia et fetchida - ei tööta</button>
-
+  <ul><li *ngFor="let number of someArray">{{ number }}</li></ul>
 <ul>
-  <li *ngFor="let user of values">{{ values }}</li>
+  <li *ngFor="let user of someValues">{{ user }}</li>
+</ul>
+<br>
+<ul>
+  <li *ngFor="let id of newValues">{{ id }}</li>
 </ul>
 </div>
 </div>

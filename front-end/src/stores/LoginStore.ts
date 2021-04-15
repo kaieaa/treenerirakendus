@@ -14,7 +14,7 @@ export class LoginStore {
       this.user = response.data;
     } catch (e) {
       this.user = null;
-      window.location.assign('/login');
+      //window.location.assign('/login');
       }
     }
 

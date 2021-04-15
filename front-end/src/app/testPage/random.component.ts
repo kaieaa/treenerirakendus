@@ -12,15 +12,24 @@ import API from '../../util/ApiUtil';
 
 export class RandomComponent {
 
+  public someArray = [1, 2, 3];
+  public someValues = ['Malle', 'Kalle', 'Liisa'];
+  public newValues: any = [];
+
   public values: any;
 
   public fetchOnClick = async () => {
     try {
       const response = await API.get('/users');
       this.values = response.data;
+      //console.log(response.data);
+      const newValues = this.values;
+      //console.log(this.values);
+      console.log(newValues);
     } catch (e) {
       console.error(e);
     }
   }
+
 
 }
