@@ -82,6 +82,7 @@ export class StudentsComponent implements OnInit {
         this.loading = false;
         if (success) {
           //location.reload();
+          this.studentsForm.clearValidators;
           this.router.navigateByUrl('/students');
         } else {
           this.error = true;
