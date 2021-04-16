@@ -18,6 +18,7 @@ export class StudentsStore {
     try {
       const response = await API.get('/students', { params: { userId } });
       this.students = response.data.students;
+      console.log(this.students);
     } catch (e) {
       console.error(e);
     }

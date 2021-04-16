@@ -11,6 +11,9 @@ export class ExercisesStore {
 
   public constructor(rootStore: RootStore) {
     this.loginStore = rootStore.loginStore;
+    console.log(this.loginStore);
+    //this.loginData = this.loginStore.fetchSession();
+    //console.log(this.loginData);
     this.user = this.loginStore.user?.id;
   }
 

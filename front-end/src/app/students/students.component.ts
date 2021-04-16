@@ -11,11 +11,12 @@ import { LoginStore } from '../../stores/LoginStore';
 import { StudentsStore } from '../../stores/StudentsStore';
 
 export interface Student {
-  id: number;
+  ID: number;
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
+  users_ID: number;
 }
 
 @Component({

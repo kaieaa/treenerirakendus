@@ -10,8 +10,9 @@ export class LoginStore {
   public fetchSession = async () => {
     try {
       const response = await API.get('/session');
-      this.user = response.data;
-      console.log(this.user);
+      this.user = response.data.ID;
+      console.log('LoginStore fetchSession this.user: ' + this.user);
+      //console.log('LoginStore fetchSession this.user: ' + this.user);
     } catch (e) {
       this.user = null;
       //window.location.assign('/login');
