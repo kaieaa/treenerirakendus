@@ -45,8 +45,8 @@ export class StudentsStore {
         email,
         phone
       });
-      this.students = response.data.students;
-      console.log(this.students);
+      this.students.push(response.data.student);
+      //console.log(this.students);
       this.status = 'FETCHED';
       return true;
     } catch (e) {

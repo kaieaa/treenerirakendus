@@ -79,11 +79,11 @@ export class StudentsComponent implements OnInit {
         this.f.phone.value
       )
       .then((success) => {
+        this.loading = false;
         if (success) {
           //location.reload();
           this.router.navigateByUrl('/students');
         } else {
-          this.loading = false;
           this.error = true;
           setTimeout(() => {
             this.error = false;
