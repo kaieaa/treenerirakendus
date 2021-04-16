@@ -6,17 +6,25 @@ import { RootStore } from './RootStore';
 export class StudentsStore {
   public status = 'FETCHING';
   public loginData: any = {};
-  public userId: any;
 
   public students: Student[] = [];
 
   public constructor() {
-    console.log(this.userId);
-    this.fetchAllStudents(this.userId);
+    this.fetchUserStudents();
   }
-  public fetchAllStudents = async (userId: number) => {
+  public fetchUserStudents = async () => {
     try {
-      const response = await API.get('/students', { params: { userId } });
+      const response = await API.get('/students');
+      this.students = response.data.students;
+      console.log(this.students);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  public fetchStudentById = async (id: number) => {
+    try {
+      const response = await API.get('/students/:', { params: { id } });
       this.students = response.data.students;
       console.log(this.students);
     } catch (e) {
@@ -31,8 +39,14 @@ export class StudentsStore {
     phone: string
   ) => {
     try {
-      const response = await API.get('/students');
+      const response = await API.post('/students', {
+        firstName,
+        lastName,
+        email,
+        phone
+      });
       this.students = response.data.students;
+      console.log(this.students);
       this.status = 'FETCHED';
       return true;
     } catch (e) {

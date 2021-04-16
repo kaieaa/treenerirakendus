@@ -16,7 +16,7 @@ export class RegisterStore {
         firstName,
         lastName,
         email,
-        password,
+        password
       });
       //this.user = response.data.user;
       this.status = 'FETCHED';

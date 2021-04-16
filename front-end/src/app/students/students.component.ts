@@ -26,14 +26,14 @@ export interface Student {
 })
 export class StudentsComponent implements OnInit {
   public students: Student[] = [];
-  public user: any;
+  //public user: any;
 
   studentsForm: FormGroup;
   loading = false;
   submitted = false;
   error = false;
   public studentsStore: StudentsStore;
-  public loginStore: LoginStore;
+  //public loginStore: LoginStore;
 
   constructor(
     rootStore: RootStore,
@@ -42,9 +42,9 @@ export class StudentsComponent implements OnInit {
     private router: Router
   ) {
     this.studentsStore = rootStore.studentsStore;
-    this.loginStore = rootStore.loginStore;
-    this.user = this.loginStore.user?.id;
-    console.log(this.user);
+    //this.loginStore = rootStore.loginStore;
+    //this.user = this.loginStore.user?.id;
+    //console.log(this.user);
     this.studentsForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -80,6 +80,7 @@ export class StudentsComponent implements OnInit {
       )
       .then((success) => {
         if (success) {
+          //location.reload();
           this.router.navigateByUrl('/students');
         } else {
           this.loading = false;
