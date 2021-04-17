@@ -13,11 +13,11 @@ export interface Exercise {
   ID: number;
   name: string;
   desc: string;
-  defaultSeries: string;
-  defaultReps: string;
+  defaultSeries: number;
+  defaultReps: number;
   defaultRepsType: string;
   defaultEquip: string;
-  defaultWeight: string;
+  defaultWeight: number;
   video1: string;
   video2: string;
   comment: string;
@@ -48,7 +48,7 @@ export class ExercisesComponent implements OnInit {
       name: ['', Validators.required],
       desc: ['', Validators.required],
       defaultSeries: ['', Validators.required],
-      defaultReps: ['', Validators.required],
+      defaultReps: [Validators.required],
       defaultRepsType: ['', Validators.required],
       defaultEquip: ['', Validators.required],
       defaultWeight: ['', Validators.required],

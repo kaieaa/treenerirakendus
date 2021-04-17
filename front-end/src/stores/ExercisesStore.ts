@@ -1,7 +1,5 @@
 import API from '../util/ApiUtil';
 import { Exercise } from '../app/exercises/exercises.component';
-import { LoginStore } from './LoginStore';
-import { RootStore } from './RootStore';
 
 export class ExercisesStore {
   public status = 'FETCHING';
@@ -30,8 +28,8 @@ export class ExercisesStore {
   public addExercise = async (
     name: string,
     desc: string,
-    defaultSeries: string,
-    defaultReps: string,
+    defaultSeries: number,
+    defaultReps: number,
     defaultRepsType: string,
     defaultEquip: string,
     defaultWeight: string,
@@ -52,7 +50,7 @@ export class ExercisesStore {
         video2,
         comment,
       });
-      console.log(this.exercise);
+      console.log(response.data.exercise);
       this.exercises.push(response.data.exercise);
       this.status = 'FETCHED';
       return true;
