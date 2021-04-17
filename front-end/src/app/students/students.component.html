@@ -27,18 +27,21 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="container-xl">
         <div *ngIf="error">
-          <p>Registreerimisel tekkis viga, kontrolli parooli või kasutajat</p>
+          <p>Kliendi salvestamisel tekkis viga, kontrolli sisestatud andmeid.</p>
         </div>
         <form [formGroup]="studentsForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <h3 class="h3 mb-3 fw-normal">Lisa uus klient</h3>
+            <p>Vajab arendust:</p>
+            <li>Salvesta nupu värv? btn-primary?</li>
+            <li>Väljade laius?</li>
             <br />
-            <label for="firstName" class="visually-hidden">E-mail</label>
+            <label for="firstName" class="visually-hidden">Sisesta kliendi e-mail</label>
             <input
               type="text"
               formControlName="firstName"
               class="form-control"
-              placeholder="Sisesta eesnimi"
+              placeholder="Sisesta kliendi eesnimi"
               [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
             />
             <div
@@ -52,13 +55,13 @@
           </div>
           <div class="form-group">
             <label for="lastName" class="visually-hidden"
-              >Sisesta perenimi</label
+              >Sisesta kliendi perenimi</label
             >
             <input
               type="lastName"
               formControlName="lastName"
               class="form-control"
-              placeholder="Sisesta perenimi"
+              placeholder="Sisesta kliendi perenimi"
               [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
             />
             <div
@@ -71,12 +74,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="email" class="visually-hidden">Parool</label>
+            <label for="email" class="visually-hidden">Sisesta kliendi e-mail</label>
             <input
               type="email"
               formControlName="email"
               class="form-control"
-              placeholder="Sisesta e-maili aadress"
+              placeholder="Sisesta kliendi e-mail"
               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             />
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -86,12 +89,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="phone" class="visually-hidden">Parool</label>
+            <label for="phone" class="visually-hidden">Sisesta kliendi telefon</label>
             <input
               type="phone"
               formControlName="phone"
               class="form-control"
-              placeholder="Sisesta telefon"
+              placeholder="Sisesta kliendi telefon"
               [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
             />
             <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
@@ -115,18 +118,24 @@
 
         <div class="form-group">
           <h3 class="h3 mb-3 fw-normal">Kliendid</h3>
+          <p>Vajab arendust:</p>
+          <li>Testimiseks lisatud ID ja users_ID väljad</li>
+          <li>Muuda nupp ei tööta</li>
+          <li>Kustuta nupp ei tööta</li>
+          <li></li>
+
           <br />
 
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead class="thead-dark">
                 <tr>
-                  <th>id</th>
+                  <th>ID</th>
                   <th>users_ID</th>
-                  <th>eesnimi</th>
-                  <th>perenimi</th>
-                  <th>email</th>
-                  <th>telefon</th>
+                  <th>Eesnimi</th>
+                  <th>Perenimi</th>
+                  <th>E-mail</th>
+                  <th>Telefon</th>
                   <th> </th>
                   <th> </th>
                 </tr>

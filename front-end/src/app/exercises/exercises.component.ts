@@ -35,7 +35,7 @@ export class ExercisesComponent implements OnInit {
   loading = false;
   submitted = false;
   error = false;
-  private exercisesStore: ExercisesStore;
+  public exercisesStore: ExercisesStore;
 
   constructor(
     rootStore: RootStore,
@@ -47,14 +47,14 @@ export class ExercisesComponent implements OnInit {
     this.exercisesForm = this.formBuilder.group({
       name: ['', Validators.required],
       desc: ['', Validators.required],
-      defaultSeries: ['', Validators],
-      defaultReps: ['', Validators],
-      defaultRepsType: ['', Validators],
-      defaultEquip: ['', Validators],
-      defaultWeight: ['', Validators],
-      video1: ['', Validators],
-      video2: ['', Validators],
-      comment: ['', Validators],
+      defaultSeries: ['', Validators.required],
+      defaultReps: ['', Validators.required],
+      defaultRepsType: ['', Validators.required],
+      defaultEquip: ['', Validators.required],
+      defaultWeight: ['', Validators.required],
+      video1: ['', Validators.required],
+      video2: ['', Validators.required],
+      comment: ['', Validators.required]
     });
   }
 
