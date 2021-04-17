@@ -70,4 +70,21 @@ export class ExercisesStore {
       console.error(e);
     }
   };
+
+  public deleteExercise = async (
+    id: number
+  ) => {
+    try {
+      const response = await API.delete('/exercises/:id', { params: { id } });
+      console.log(response.data.exercise);
+      //this.replies.splice(this.replies.indexOf(reply), 1);
+      this.exercises.splice(response.data.exercise, 1);
+      this.status = 'FETCHED';
+      return true;
+    } catch (e) {
+      console.error(e);
+      this.status = 'ERROR';
+      return false;
+    }
+  };
 }

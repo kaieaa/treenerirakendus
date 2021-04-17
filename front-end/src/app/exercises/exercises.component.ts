@@ -53,8 +53,8 @@ export class ExercisesComponent implements OnInit {
       defaultEquip: ['', Validators.required],
       defaultWeight: ['', Validators.required],
       video1: ['', Validators.required],
-      video2: ['', Validators.required],
-      comment: ['', Validators.required]
+      video2: [],
+      comment: ['', Validators.required],
     });
   }
 
@@ -101,5 +101,11 @@ export class ExercisesComponent implements OnInit {
           }, 5000);
         }
       });
+  }
+  //public exercise: Exercise;
+
+  public deleteButton = async (id: number ) => {
+    this.exercisesStore.deleteExercise(id);
+    console.log(id);
   }
 }
