@@ -75,10 +75,10 @@ export class ExercisesStore {
     id: number
   ) => {
     try {
-      const response = await API.delete('/exercises/:id', { params: { id } });
-      console.log(response.data.exercise);
+      console.log(id);
+      const response = await API.delete('/exercises/' +id);
       //this.replies.splice(this.replies.indexOf(reply), 1);
-      this.exercises.splice(response.data.exercise, 1);
+      //this.exercises.splice(response.data.exercise, 1);
       this.status = 'FETCHED';
       return true;
     } catch (e) {

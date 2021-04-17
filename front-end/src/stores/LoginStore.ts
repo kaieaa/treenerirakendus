@@ -33,17 +33,4 @@ export class LoginStore {
     }
   };
 
-  public logOut = async () => {
-    try {
-      const response = await API.get('/logout');
-      this.status = 'FETCHED';
-      return true;
-      this.user = null;
-      window.location.assign('/login');
-    } catch (e) {
-      console.error(e);
-      this.status = 'ERROR';
-      return false;
-    }
-}
 }

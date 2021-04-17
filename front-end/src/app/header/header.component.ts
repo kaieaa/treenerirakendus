@@ -9,25 +9,28 @@ interface NavElement {
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
   public loginStore: LoginStore;
-
 
   constructor(rootStore: RootStore) {
     this.loginStore = rootStore.loginStore;
   }
 
   public headerElements: NavElement[] = [
-    {url: '/login', name: 'Login'}, {url: '/leht', name: 'Testimiseks'}, {url: '/students', name: 'Õpilased'}, {url: '/exercises', name: 'Harjutused'}
+    { url: '/login', name: 'Login' },
+    { url: '/leht', name: 'Testimiseks' },
+    { url: '/students', name: 'Õpilased' },
+    { url: '/exercises', name: 'Harjutused' },
   ];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public logOutButton = async () => {
-    this.loginStore.logOut();
-  }
+    document.cookie = 'trainerSessionCookie=; Max-Age=0; path=/; domain=' + location.host;
+    this.loginStore.user = null;
+    console.log('LoginStore fetchSession this.user: ' + this.loginStore.user);
+    window.location.assign('/login');
+  };
 }
