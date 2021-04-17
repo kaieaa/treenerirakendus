@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginStore } from '../../stores/LoginStore';
+import { RootStore } from '../../stores/RootStore';
 
 interface NavElement {
   url: string;
@@ -11,7 +13,11 @@ interface NavElement {
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  public loginStore: LoginStore;
+
+
+  constructor(rootStore: RootStore) {
+    this.loginStore = rootStore.loginStore;
   }
 
   public headerElements: NavElement[] = [
@@ -21,4 +27,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public logOutButton = async () => {
+    this.loginStore.logOut();
+  }
 }

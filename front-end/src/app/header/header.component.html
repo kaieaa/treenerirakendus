@@ -14,7 +14,11 @@
     </button>
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" routerLink="/login">Sign out</a>
+        <a
+        class="nav-link"
+        type="submit"
+        role="button"
+        (click)="logOutButton()">Logi välja</a>
       </li>
     </ul>
   </header>
