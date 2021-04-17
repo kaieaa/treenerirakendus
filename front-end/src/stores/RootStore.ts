@@ -15,7 +15,7 @@ export class RootStore {
     this.loginStore = new LoginStore();
     this.registerStore = new RegisterStore();
     this.studentsStore = new StudentsStore();
-    this.exercisesStore = new ExercisesStore(this);
+    this.exercisesStore = new ExercisesStore();
     this.testingStore = new TestingStore();
   }
 }

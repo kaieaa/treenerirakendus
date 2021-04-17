@@ -1,38 +1,34 @@
 import API from '../util/ApiUtil';
+import { Exercise } from '../app/exercises/exercises.component';
 import { LoginStore } from './LoginStore';
 import { RootStore } from './RootStore';
 
 export class ExercisesStore {
   public status = 'FETCHING';
   public loginData: any = {};
-  public user: any;
 
-  private loginStore: LoginStore;
+  public exercises: Exercise[] = [];
+  public exercise: Exercise[] = [];
 
-  public constructor(rootStore: RootStore) {
-    this.loginStore = rootStore.loginStore;
-    console.log(this.loginStore);
-    //this.loginData = this.loginStore.fetchSession();
-    //console.log(this.loginData);
-    this.user = this.loginStore.user?.id;
+  public constructor() {
+    this.fetchUserExercises();
   }
 
-  public exercises = async (name: string) => {
-    //Ajutine, ei tööta.
+  public fetchUserExercises = async () => {
     try {
-      const response = await API.post('/login', { name });
-      this.user = response.data.user;
+      const response = await API.get('/exercises');
+      this.exercises = response.data.exercises;
       this.status = 'FETCHED';
       return true;
     } catch (e) {
       console.error(e);
-      this.user = null;
       this.status = 'ERROR';
       return false;
     }
   };
+
   public addExercise = async (
-    userId: number,
+    name: string,
     desc: string,
     defaultSeries: string,
     defaultReps: string,
@@ -44,8 +40,8 @@ export class ExercisesStore {
     comment: string
   ) => {
     try {
-      userId = this.user;
       const response = await API.post('/exercises', {
+        name,
         desc,
         defaultSeries,
         defaultReps,
@@ -56,26 +52,24 @@ export class ExercisesStore {
         video2,
         comment,
       });
+      console.log(this.exercise);
+      this.exercises.push(response.data.exercise);
       this.status = 'FETCHED';
       return true;
     } catch (e) {
       console.error(e);
-      this.user = null;
       this.status = 'ERROR';
       return false;
     }
   };
-  public readExecises = async (name: string, desc: string) => {
+
+  public fetchExerciseById = async (id: number) => {
     try {
-      const response = await API.get('/exercises', { params: { name, desc } });
-      this.user = response.data.user;
-      this.status = 'FETCHED';
-      return true;
+      const response = await API.get('/exercises/:', { params: { id } });
+      this.exercise = response.data.exercise;
+      console.log(this.exercises);
     } catch (e) {
       console.error(e);
-      this.user = null;
-      this.status = 'ERROR';
-      return false;
     }
   };
 }

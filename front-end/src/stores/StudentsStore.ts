@@ -1,13 +1,12 @@
 import API from '../util/ApiUtil';
 import { Student } from '../app/students/students.component';
-import { LoginStore } from '../stores/LoginStore';
-import { RootStore } from './RootStore';
 
 export class StudentsStore {
   public status = 'FETCHING';
   public loginData: any = {};
 
   public students: Student[] = [];
+  public student: Student[] = [];
 
   public constructor() {
     this.fetchUserStudents();
@@ -17,18 +16,12 @@ export class StudentsStore {
       const response = await API.get('/students');
       this.students = response.data.students;
       console.log(this.students);
+      this.status = 'FETCHED';
+      return true;
     } catch (e) {
       console.error(e);
-    }
-  };
-
-  public fetchStudentById = async (id: number) => {
-    try {
-      const response = await API.get('/students/:', { params: { id } });
-      this.students = response.data.students;
-      console.log(this.students);
-    } catch (e) {
-      console.error(e);
+      this.status = 'ERROR';
+      return false;
     }
   };
 
@@ -46,14 +39,22 @@ export class StudentsStore {
         phone
       });
       this.students.push(response.data.student);
-      //console.log(this.students);
+      //console.log(this.student);
       this.status = 'FETCHED';
       return true;
     } catch (e) {
       console.error(e);
-      //this.students = null;
       this.status = 'ERROR';
       return false;
+    }
+  };
+  public fetchStudentById = async (id: number) => {
+    try {
+      const response = await API.get('/students/:', { params: { id } });
+      this.student = response.data.student;
+      console.log(this.students);
+    } catch (e) {
+      console.error(e);
     }
   };
 }
