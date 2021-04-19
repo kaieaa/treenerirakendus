@@ -19,18 +19,22 @@ export class HeaderComponent implements OnInit {
   }
 
   public headerElements: NavElement[] = [
-    { url: '/login', name: 'Login' },
     { url: '/leht', name: 'Testimiseks' },
     { url: '/students', name: 'Õpilased' },
     { url: '/exercises', name: 'Harjutused' },
+    { url: '/trainings', name: 'Treeningud' },
+    { url: '/trainingplans', name: 'Treeningplaanid' },
   ];
 
   ngOnInit(): void {}
 
   public logOutButton = async () => {
-    document.cookie = 'trainerSessionCookie=; Max-Age=0; path=/; domain=' + location.host;
+    //const fetchSessionId: number = +this.loginStore.fetchSession();
+    this.loginStore.logout();
+    //document.cookie = 'trainerSessionCookie=; Max-Age=0; path=/; domain=' + location.host;
     this.loginStore.user = null;
-    console.log('LoginStore fetchSession this.user: ' + this.loginStore.user);
-    window.location.assign('/login');
+    //console.log('LoginStore fetchSession this.user: ' + this.loginStore.user);
+    //window.location.assign('/login');
   };
+
 }

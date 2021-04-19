@@ -6,7 +6,7 @@ export class ExercisesStore {
   public loginData: any = {};
 
   public exercises: Exercise[] = [];
-  public exercise: Exercise[] = [];
+  public oneExercise: Exercise[] = [];
 
   public constructor() {
     this.fetchUserExercises();
@@ -63,8 +63,10 @@ export class ExercisesStore {
 
   public fetchExerciseById = async (id: number) => {
     try {
-      const response = await API.get('/exercises/:', { params: { id } });
-      this.exercise = response.data.exercise;
+      this.oneExercise = [];
+      const response = await API.get('/exercises/'+id);
+      this.oneExercise.push(response.data.exercise);
+      //this.exercise = response.data.exercise;
       console.log(this.exercises);
     } catch (e) {
       console.error(e);

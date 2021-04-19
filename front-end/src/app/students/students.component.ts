@@ -25,6 +25,7 @@ export interface Student {
 })
 export class StudentsComponent implements OnInit {
   public students: Student[] = [];
+  public student: Student[] = [];
   //public user: any;
 
   studentsForm: FormGroup;
@@ -86,4 +87,14 @@ export class StudentsComponent implements OnInit {
         }
       });
   }
+
+  public deleteButton = async (id: number ) => {
+    this.studentsStore.deleteStudent(id);
+    console.log(id);
+  }
+
+public readButton = async (id: number ) => {
+  this.studentsStore.fetchStudentById(id);
+  console.log(id);
+}
 }

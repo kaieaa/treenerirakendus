@@ -6,7 +6,7 @@ export class StudentsStore {
   public loginData: any = {};
 
   public students: Student[] = [];
-  public student: Student[] = [];
+  public oneStudent: Student[] = [];
 
   public constructor() {
     this.fetchUserStudents();
@@ -50,11 +50,30 @@ export class StudentsStore {
   };
   public fetchStudentById = async (id: number) => {
     try {
-      const response = await API.get('/students/:', { params: { id } });
-      this.student = response.data.student;
-      console.log(this.students);
+      this.oneStudent = [];
+      const response = await API.get('/students/'+id)//, { params: { id } });
+      this.oneStudent.push(response.data.student);
+      //this.students2 = response.data.student;
+      console.log(this.oneStudent);
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  public deleteStudent = async (
+    id: number
+  ) => {
+    try {
+      console.log(id);
+      const response = await API.delete('/students/'+id)//, {params: { id }});
+      //this.replies.splice(this.replies.indexOf(reply), 1);
+      //this.exercises.splice(response.data.exercise, 1);
+      this.status = 'FETCHED';
+      return true;
+    } catch (e) {
+      console.error(e);
+      this.status = 'ERROR';
+      return false;
     }
   };
 }

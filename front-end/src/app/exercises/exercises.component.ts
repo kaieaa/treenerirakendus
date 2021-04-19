@@ -108,4 +108,9 @@ export class ExercisesComponent implements OnInit {
     this.exercisesStore.deleteExercise(id);
     console.log(id);
   }
+
+  public readButton = async (id: number ) => {
+    this.exercisesStore.fetchExerciseById(id);
+    console.log(id);
+  }
 }
