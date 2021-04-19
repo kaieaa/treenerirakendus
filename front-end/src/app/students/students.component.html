@@ -32,112 +32,117 @@
             Kliendi salvestamisel tekkis viga, kontrolli sisestatud andmeid.
           </p>
         </div>
-        <form [formGroup]="studentsForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <h3 class="h3 mb-3 fw-normal">Lisa uus klient</h3>
-            <p>Vajab arendust:</p>
-            <li>Salvesta nupu värv? btn-primary?</li>
-            <li>Väljade laius?</li>
-            <br />
-            <label for="firstName" class="visually-hidden"
-              >Sisesta kliendi e-mail</label
-            >
-            <input
-              type="text"
-              formControlName="firstName"
-              class="form-control"
-              placeholder="Sisesta kliendi eesnimi"
-              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-            />
-            <div
-              *ngIf="submitted && f.firstName.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.firstName.errors.required">
-                Eesnimi on kohustuslik väli
+        <div class="row">
+          <div class="col-6">
+            <form [formGroup]="studentsForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <h3 class="h3 mb-3 fw-normal">Lisa uus klient</h3>
+                <br />
+                <label for="firstName" class="visually-hidden"
+                  >Sisesta kliendi e-mail</label
+                >
+                <input
+                  type="text"
+                  formControlName="firstName"
+                  class="form-control"
+                  placeholder="Sisesta kliendi eesnimi"
+                  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.firstName.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.firstName.errors.required">
+                    Eesnimi on kohustuslik väli
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="lastName" class="visually-hidden"
-              >Sisesta kliendi perenimi</label
-            >
-            <input
-              type="lastName"
-              formControlName="lastName"
-              class="form-control"
-              placeholder="Sisesta kliendi perenimi"
-              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
-            />
-            <div
-              *ngIf="submitted && f.lastName.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.lastName.errors.required">
-                Perenimi on kohustuslik väli
+              <div class="form-group">
+                <label for="lastName" class="visually-hidden"
+                  >Sisesta kliendi perenimi</label
+                >
+                <input
+                  type="lastName"
+                  formControlName="lastName"
+                  class="form-control"
+                  placeholder="Sisesta kliendi perenimi"
+                  [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.lastName.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.lastName.errors.required">
+                    Perenimi on kohustuslik väli
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="visually-hidden"
-              >Sisesta kliendi e-mail</label
-            >
-            <input
-              type="email"
-              formControlName="email"
-              class="form-control"
-              placeholder="Sisesta kliendi e-mail"
-              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-            />
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">
-                E-mail on kohustuslik väli
+              <div class="form-group">
+                <label for="email" class="visually-hidden"
+                  >Sisesta kliendi e-mail</label
+                >
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Sisesta kliendi e-mail"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.email.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.email.errors.required">
+                    E-mail on kohustuslik väli
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="phone" class="visually-hidden"
-              >Sisesta kliendi telefon</label
-            >
-            <input
-              type="phone"
-              formControlName="phone"
-              class="form-control"
-              placeholder="Sisesta kliendi telefon"
-              [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
-            />
-            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-              <div *ngIf="f.phone.errors.required">
-                Telefon on kohustuslik väli
+              <div class="form-group">
+                <label for="phone" class="visually-hidden"
+                  >Sisesta kliendi telefon</label
+                >
+                <input
+                  type="phone"
+                  formControlName="phone"
+                  class="form-control"
+                  placeholder="Sisesta kliendi telefon"
+                  [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.phone.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.phone.errors.required">
+                    Telefon on kohustuslik väli
+                  </div>
+                </div>
               </div>
-            </div>
+              <div class="form-group">
+                <button
+                  [disabled]="loading"
+                  class="w-100 btn btn-md btn-primary"
+                >
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  Salvesta
+                </button>
+              </div>
+            </form>
           </div>
-          <div class="form-group">
-            <button [disabled]="loading" class="w-100 btn btn-md btn-primary">
-              <span
-                *ngIf="loading"
-                class="spinner-border spinner-border-sm mr-1"
-              ></span>
-              Salvesta
-            </button>
-          </div>
-        </form>
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
         <br />
         <!--Klientide nimekiri -->
 
         <div class="form-group">
           <h3 class="h3 mb-3 fw-normal">Kliendid</h3>
-          <p>Vajab arendust:</p>
-          <li>Testimiseks lisatud ID ja users_ID väljad</li>
-          <li>Kustuta nupp ei tööta</li>
-          <br />
-
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead class="thead-dark">
                 <tr>
-                  <th>ID</th>
-                  <th>users_ID</th>
                   <th>Eesnimi</th>
                   <th>Perenimi</th>
                   <th>E-mail</th>
@@ -147,22 +152,10 @@
                 </tr>
               </thead>
               <tr *ngFor="let student of studentsStore.students">
-                <td>{{ student.ID }}</td>
-                <td>{{ student.users_ID }}</td>
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
                 <td>{{ student.email }}</td>
                 <td>{{ student.phone }}</td>
-                <td>
-                  <button
-                    class="btn btn-outline-danger btn-sm"
-                    type="submit"
-                    role="button"
-                    (click)="deleteButton(student.ID)"
-                  >
-                    Kustuta
-                  </button>
-                </td>
                 <td>
                   <button
                     class="btn btn-outline-info btn-sm"
@@ -171,6 +164,16 @@
                     (click)="readButton(student.ID)"
                   >
                     Vaata
+                  </button>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    type="submit"
+                    role="button"
+                    (click)="deleteButton(student.ID)"
+                  >
+                    Kustuta
                   </button>
                 </td>
               </tr>
@@ -186,24 +189,17 @@
               <table class="table table-striped table-sm">
                 <thead class="thead-dark">
                   <tr>
-                    <th>ID</th>
-                    <th>users_ID</th>
                     <th>Eesnimi</th>
                     <th>Perenimi</th>
                     <th>E-mail</th>
                     <th>Telefon</th>
-                    <th></th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tr *ngFor="let student of studentsStore.oneStudent">
-                  <td>{{ student.ID }}</td>
-                  <td>{{ student.users_ID }}</td>
                   <td>{{ student.firstName }}</td>
                   <td>{{ student.lastName }}</td>
                   <td>{{ student.email }}</td>
                   <td>{{ student.phone }}</td>
-                  <td></td>
                 </tr>
               </table>
             </div>
