@@ -66,8 +66,8 @@ export class StudentsStore {
     try {
       console.log(id);
       const response = await API.delete('/students/'+id)//, {params: { id }});
-      //this.students.splice(response.data.indexOf(student), 1);
-      this.students.splice(response.data.student, 1);
+      //this.students.splice(this.students.indexOf(response.data.student), 1);
+      this.students = this.students.filter((student) => student.ID !== id);
       this.status = 'FETCHED';
       return true;
     } catch (e) {
