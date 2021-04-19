@@ -34,16 +34,17 @@ export class LoginStore {
   };
 
   public logout = async () => {
-    window.location.assign('/login');
-    /*try {
-    const response = await API.get('/logout');
-    this.user = response.data.user;
-    console.log('after response.data.user' + this.user);
-    this.user = null;
-    console.log('after this.user = null' + this.user);
-    return true;
-  } catch (e) {
-    console.error(e);
-    return false;*/
+    try {
+      const response = await API.get('/logout');
+      this.user = response.data.user;
+      console.log('after response.data.user' + this.user);
+      this.user = null;
+      console.log('after this.user = null' + this.user);
+      window.location.assign('/login');
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
   };
 }
