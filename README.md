@@ -1,5 +1,4 @@
-# treenerirakendus
-Personaaltreeneri haldusrakendus front-end
+# Personaaltreeneri haldusrakendus front-end
 
 - Tegemist on personaaltreeneri rakenduse kasutajaliidese koodi repositooriumiga
 
