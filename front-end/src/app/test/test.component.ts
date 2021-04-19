@@ -48,7 +48,7 @@ export class TestComponent implements OnInit {
     this.loginStore.login(this.f.username.value, this.f.password.value)
       .then((success) => {
         if (success) {
-          this.router.navigateByUrl('/leht');
+          this.router.navigateByUrl('/home');
         } else {
           this.loading = false;
           this.error = true;

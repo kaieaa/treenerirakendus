@@ -46,15 +46,15 @@ export class ExercisesComponent implements OnInit {
     this.exercisesStore = rootStore.exercisesStore;
     this.exercisesForm = this.formBuilder.group({
       name: ['', Validators.required],
-      desc: ['', Validators.required],
-      defaultSeries: ['', Validators.required],
-      defaultReps: [Validators.required],
-      defaultRepsType: ['', Validators.required],
-      defaultEquip: ['', Validators.required],
-      defaultWeight: ['', Validators.required],
-      video1: ['', Validators.required],
+      desc: [],
+      defaultSeries: [],
+      defaultReps: [],
+      defaultRepsType: [],
+      defaultEquip: [],
+      defaultWeight: [],
+      video1: [],
       video2: [],
-      comment: ['', Validators.required],
+      comment: [],
     });
   }
 

@@ -32,6 +32,9 @@
             Harjutuse salvestamisel tekkis viga, kontrolli sisestatud andmeid.
           </p>
         </div>
+        <div class="row">
+        <div class="col-6">
+
         <form [formGroup]="exercisesForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <h3 class="h3 mb-3 fw-normal">Lisa uus harjutus</h3>
@@ -57,13 +60,7 @@
               formControlName="desc"
               class="form-control"
               placeholder="Sisesta harjutuse kirjeldus"
-              [ngClass]="{ 'is-invalid': submitted && f.desc.errors }"
             />
-            <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
-              <div *ngIf="f.desc.errors.required">
-                Kirjeldus on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <label for="defaultSeries" class="visually-hidden"
@@ -74,16 +71,7 @@
               formControlName="defaultSeries"
               class="form-control"
               placeholder="Sisesta seeriate arv"
-              [ngClass]="{ 'is-invalid': submitted && f.defaultSeries.errors }"
             />
-            <div
-              *ngIf="submitted && f.defaultSeries.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.defaultSeries.errors.required">
-                Seeriate arv on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <label for="defaultReps" class="visually-hidden"
@@ -94,16 +82,7 @@
               formControlName="defaultReps"
               class="form-control"
               placeholder="Sisesta korduste arv"
-              [ngClass]="{ 'is-invalid': submitted && f.defaultReps.errors }"
             />
-            <div
-              *ngIf="submitted && f.defaultReps.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.defaultReps.errors.required">
-                Korduste arv on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <label for="defaultRepsType" class="visually-hidden"
@@ -114,18 +93,7 @@
               formControlName="defaultRepsType"
               class="form-control"
               placeholder="Sisesta korduste liik (nt. kordust, minutit, meetrit jne)"
-              [ngClass]="{
-                'is-invalid': submitted && f.defaultRepsType.errors
-              }"
             />
-            <div
-              *ngIf="submitted && f.defaultRepsType.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.defaultRepsType.errors.required">
-                Korduste liik on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <label for="defaultEquip" class="visually-hidden"
@@ -136,16 +104,7 @@
               formControlName="defaultEquip"
               class="form-control"
               placeholder="Sisesta treeningvahend (nt. hantel, kang)"
-              [ngClass]="{ 'is-invalid': submitted && f.defaultEquip.errors }"
             />
-            <div
-              *ngIf="submitted && f.defaultEquip.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.defaultEquip.errors.required">
-                Treeningvahend on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <label for="defaultWeight" class="visually-hidden"
@@ -165,13 +124,7 @@
               formControlName="video1"
               class="form-control"
               placeholder="Sisesta video link"
-              [ngClass]="{ 'is-invalid': submitted && f.video1.errors }"
             />
-            <div *ngIf="submitted && f.video1.errors" class="invalid-feedback">
-              <div *ngIf="f.video1.errors.required">
-                Video1 on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <label for="video2" class="visually-hidden">Video2</label>
@@ -189,13 +142,7 @@
               formControlName="comment"
               class="form-control"
               placeholder="Sisesta kommentaar"
-              [ngClass]="{ 'is-invalid': submitted && f.comment.errors }"
             />
-            <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
-              <div *ngIf="f.comment.errors.required">
-                Kommentaar on kohustuslik väli
-              </div>
-            </div>
           </div>
           <div class="form-group">
             <button [disabled]="loading" class="w-100 btn btn-md btn-primary">
@@ -207,20 +154,21 @@
             </button>
           </div>
         </form>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+        </div>
+      </div>
         <br />
         <!--Harjutuste nimekiri -->
         <div class="form-group">
           <h3 class="h3 mb-3 fw-normal">Harjutused</h3>
-          <p>Vajab arendust:</p>
-          <li>Testimiseks lisatud ID ja users_ID väljad</li>
-          <li>Kustuta nupp ei tööta</li>
-          <br />
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead class="thead-dark">
                 <tr>
-                  <th>ID</th>
-                  <th>users_ID</th>
                   <th>Nimi</th>
                   <th>Kirjeldus</th>
                   <th>Seeriate arv</th>
@@ -230,11 +178,7 @@
                   <th></th>
                 </tr>
               </thead>
-              <tr
-                *ngFor="let exercise of exercisesStore.exercises"
-              >
-                <td>{{ exercise.ID }}</td>
-                <td>{{ exercise.users_ID }}</td>
+              <tr *ngFor="let exercise of exercisesStore.exercises">
                 <td>{{ exercise.name }}</td>
                 <td>{{ exercise.desc }}</td>
                 <td>{{ exercise.defaultSeries }}</td>
@@ -246,23 +190,25 @@
                     type="submit"
                     role="button"
                     (click)="deleteButton(exercise.ID)"
-                    >Kustuta</button
                   >
+                    Kustuta
+                  </button>
                 </td>
                 <td>
                   <button
-                  class="btn btn-outline-info btn-sm"
-                  type="submit"
-                  role="button"
-                  (click)="readButton(exercise.ID)"
-                  >Vaata</button
-                >
-              </td>
+                    class="btn btn-outline-info btn-sm"
+                    type="submit"
+                    role="button"
+                    (click)="readButton(exercise.ID)"
+                  >
+                    Vaata
+                  </button>
+                </td>
               </tr>
             </table>
           </div>
         </div>
-        <br>
+        <br />
         <div class="form-group">
           <h3 class="h3 mb-3 fw-normal">Vaata ühte harjutust</h3>
           <br />
@@ -278,8 +224,10 @@
                   <th>Korduste liik</th>
                   <th>Treeningvahend</th>
                   <th>Treeningvahendi kaal</th>
-                  <th> </th>
-                  <th> </th>
+                  <th>Video 1</th>
+                  <th>Video 2</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tr *ngFor="let exercise of exercisesStore.oneExercise">
@@ -290,10 +238,12 @@
                 <td>{{ exercise.defaultRepsType }}</td>
                 <td>{{ exercise.defaultEquip }}</td>
                 <td>{{ exercise.defaultWeight }}</td>
+                <td><a href="{{ exercise.video1 }}" target="_blank">{{ exercise.video1 }}</a></td>
+                <td><a href="{{ exercise.video2 }}" target="_blank">{{ exercise.video2 }}</a></td>
               </tr>
             </table>
           </div>
-          </div>
+        </div>
       </div>
     </main>
   </body>

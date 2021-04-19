@@ -7,8 +7,9 @@ import { StudentsComponent } from './students/students.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 
 const routes: Routes = [
+  {path: '', component: TestComponent},
   {path: 'login', component: TestComponent},
-  {path: 'leht', component: RandomComponent},
+  {path: 'home', component: RandomComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'students', component: StudentsComponent},
   {path: 'exercises', component: ExercisesComponent}
