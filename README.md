@@ -6,11 +6,11 @@ Rakendus on loodud eratreenerite ja terapeutide igapäevatöö lihtsustamiseks. 
 
 Rakenduse põhifunktsionaalsus:
 
-Harjutuste salvestamine andmebaasi
-Klientide ja/või õpilaste (edaspidi klientide) andmete salvestamine andmebaasi
-Klientide andmete vaatamine ja muutmine
-Klientide treeningute lisamine
-Salvestatud harjutuste sidumine konkreetse kliendi ja treeninguga
-Harjutuste jagamine gruppidesse vastavalt kasutaja soovile (nt. eraldi soojendusharjutused, erialaspetsiifilised, üldfüüsilise treeningu harjutused, taastusravi erinevad kategooriad jne.)
-Klientide treeningplaanide lisamine
-Salvestatud harjutuste sidumine konkreetse kliendi ja treeningplaaniga
+- Harjutuste salvestamine andmebaasi
+- Klientide ja/või õpilaste (edaspidi klientide) andmete salvestamine andmebaasi
+- Klientide andmete vaatamine ja muutmine
+- Klientide treeningute lisamine
+- Salvestatud harjutuste sidumine konkreetse kliendi ja treeninguga
+- Harjutuste jagamine gruppidesse vastavalt kasutaja soovile (nt. eraldi soojendusharjutused, erialaspetsiifilised, üldfüüsilise treeningu harjutused, taastusravi erinevad kategooriad jne.)
+- Klientide treeningplaanide lisamine
+- Salvestatud harjutuste sidumine konkreetse kliendi ja treeningplaaniga
