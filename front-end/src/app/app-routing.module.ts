@@ -5,6 +5,8 @@ import { TestComponent } from './test/test.component';
 import { RegisterComponent } from './register/register.component';
 import { StudentsComponent } from './students/students.component';
 import { ExercisesComponent } from './exercises/exercises.component';
+import { TrainingsComponent } from './trainings/trainings.component';
+import { TrainingplansComponent } from './trainingplans/trainingplans.component';
 
 const routes: Routes = [
   {path: '', component: TestComponent},
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path: 'home', component: RandomComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'students', component: StudentsComponent},
-  {path: 'exercises', component: ExercisesComponent}
+  {path: 'exercises', component: ExercisesComponent},
+  {path: 'trainings', component: TrainingsComponent},
+  {path: 'trainingplans', component: TrainingplansComponent}
 ];
 
 @NgModule({

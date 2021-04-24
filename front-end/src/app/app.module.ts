@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 import { StudentsComponent } from './students/students.component';
 import { RegisterComponent } from './register/register.component';
+import { TrainingsComponent } from './trainings/trainings.component';
+import { TrainingplansComponent } from './trainingplans/trainingplans.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegisterComponent } from './register/register.component';
     HeaderComponent,
     ExercisesComponent,
     StudentsComponent,
-    RegisterComponent
+    RegisterComponent,
+    TrainingsComponent,
+    TrainingplansComponent
   ],
   imports: [
     BrowserModule,

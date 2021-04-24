@@ -3,6 +3,7 @@ import { RegisterStore } from './RegisterStore';
 import { StudentsStore } from './StudentsStore';
 import { ExercisesStore } from './ExercisesStore';
 import { TestingStore } from './TestingStore';
+import { TrainingStore } from './TrainingStore';
 
 export class RootStore {
   public loginStore: LoginStore;
@@ -10,6 +11,7 @@ export class RootStore {
   public studentsStore: StudentsStore;
   public exercisesStore: ExercisesStore;
   public testingStore: TestingStore;
+  public trainingStore: TrainingStore;
 
   public constructor() {
     this.loginStore = new LoginStore();
@@ -17,5 +19,6 @@ export class RootStore {
     this.studentsStore = new StudentsStore();
     this.exercisesStore = new ExercisesStore();
     this.testingStore = new TestingStore();
+    this.trainingStore = new TrainingStore();
   }
 }
