@@ -13,7 +13,7 @@ export class TrainingplanStore {
   }
   public fetchUserTrainingplans = async () => {
     try {
-      const response = await API.get('/trainings');
+      const response = await API.get('/trainingplans');
       this.trainingplans = response.data.trainingplans;
       console.log(this.trainingplans);
       this.status = 'FETCHED';
@@ -26,15 +26,15 @@ export class TrainingplanStore {
   };
 
   public addTrainingplan = async (
-    startTime: string,
-    endTime: string,
+    student_ID: number,
+    name: string,
     date: string,
     comment: string
   ) => {
     try {
       const response = await API.post('/trainingplans', {
-        startTime,
-        endTime,
+        student_ID,
+        name,
         date,
         comment
       });
@@ -65,7 +65,7 @@ export class TrainingplanStore {
   ) => {
     try {
       console.log(id);
-      const response = await API.delete('/trainings/'+id)//, {params: { id }});
+      const response = await API.delete('/trainingplans/'+id)//, {params: { id }});
       //this.students.splice(this.students.indexOf(response.data.student), 1);
       this.trainingplans = this.trainingplans.filter((trainingplan) => trainingplan.ID !== id);
       this.status = 'FETCHED';
@@ -77,3 +77,4 @@ export class TrainingplanStore {
     }
   };
 }
+

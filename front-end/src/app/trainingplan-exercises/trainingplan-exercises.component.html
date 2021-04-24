@@ -59,8 +59,8 @@
                 aria-label="Default select example"
                 formControlName="student_ID"
               >
-                <option *ngFor="let student of studentsStore.students" [value]="student.ID">
-                  {{ student.firstName }} {{ student.lastName }}
+                <option *ngFor="let trainingplan of trainingplanStore.trainingplans">
+                  {{ trainingplan.ID }} {{ trainingplan.name }}
                 </option>
               </select></div>
             </div>

@@ -8,39 +8,39 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { RootStore } from '../../stores/RootStore';
 import { TrainingplanStore } from '../../stores/TrainingplanStore';
-import { StudentsStore } from '../../stores/StudentsStore';
-import { Student } from '../students/students.component';
+import { Trainingplan } from '../trainingplans/trainingplans.component';
 import { ExercisesStore } from '../../stores/ExercisesStore';
 import { Exercise } from '../exercises/exercises.component';
+import { TrainingplanExercisesStore } from '../../stores/TrainingplanExercisesStore';
 
 
-export interface Trainingplan {
+
+export interface TrainingplanExercise {
   ID: number;
-  student_ID: string;
-  name: string;
-  date: string;
-  comment: string;
+  trainingplan_ID: number;
+  exercise_ID: number;
 }
 
 @Component({
   selector: 'app-trainingplans',
-  templateUrl: './trainingplans.component.html',
-  styleUrls: ['./trainingplans.component.css']
+  templateUrl: './trainingplan-exercises.component.html',
+  styleUrls: ['./trainingplan-exercises.component.css']
 })
-export class TrainingplansComponent implements OnInit {
+export class TrainingplanExercisesComponent implements OnInit {
 
   public trainingplans: Trainingplan[] = [];
   public trainingplan: Trainingplan[] = [];
-  public students: Student[] = [];
   public exercises: Exercise[] = [];
+  public trainingplanExercises: TrainingplanExercise[] = [];
+  //public user: any;
 
   trainingplanForm: FormGroup;
   loading = false;
   submitted = false;
   error = false;
   public trainingplanStore: TrainingplanStore;
-  public studentsStore: StudentsStore;
   public exercisesStore: ExercisesStore;
+  public trainingplanExercisesStore: TrainingplanExercisesStore;
 
   constructor(
     rootStore: RootStore,
@@ -49,8 +49,8 @@ export class TrainingplansComponent implements OnInit {
     private router: Router
   ) {
     this.trainingplanStore = rootStore.trainingplanStore;
-    this.studentsStore = rootStore.studentsStore;
     this.exercisesStore = rootStore.exercisesStore;
+    this.trainingplanExercisesStore = rootStore.trainingplanExercisesStore;
     this.trainingplanForm = this.formBuilder.group({
       student_ID: ['', Validators.required],
       name: [''],
@@ -107,4 +107,5 @@ public readButton = async (id: number ) => {
   this.trainingplanStore.fetchTrainingplanById(id);
   console.log(id);
 }
+
 }

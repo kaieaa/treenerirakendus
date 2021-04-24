@@ -5,6 +5,7 @@ import { ExercisesStore } from './ExercisesStore';
 import { TestingStore } from './TestingStore';
 import { TrainingStore } from './TrainingStore';
 import { TrainingplanStore } from './TrainingplanStore';
+import { TrainingplanExercisesStore } from './TrainingplanExercisesStore';
 
 export class RootStore {
   public loginStore: LoginStore;
@@ -14,6 +15,7 @@ export class RootStore {
   public testingStore: TestingStore;
   public trainingStore: TrainingStore;
   public trainingplanStore: TrainingplanStore;
+  public trainingplanExercisesStore: TrainingplanExercisesStore;
 
   public constructor() {
     this.loginStore = new LoginStore();
@@ -23,5 +25,6 @@ export class RootStore {
     this.testingStore = new TestingStore();
     this.trainingStore = new TrainingStore();
     this.trainingplanStore = new TrainingplanStore();
+    this.trainingplanExercisesStore = new TrainingplanExercisesStore();
   }
 }
