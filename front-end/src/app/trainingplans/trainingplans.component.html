@@ -1,1 +1,213 @@
-<p>trainingplans works!</p>
+<app-header></app-header>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+  integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+  integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+  crossorigin="anonymous"
+></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Personaaltreeneri haldusrakendus</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="container-xl">
+        <div *ngIf="error">
+          <p>
+            Treeningplaani salvestamisel tekkis viga, kontrolli sisestatud
+            andmeid.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <br />
+            <h3 class="h3 mb-3 fw-normal">Lisa uus treeningplaan</h3>
+            <form [formGroup]="trainingplanForm" (ngSubmit)="onSubmit()">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                formControlName="student_ID"
+              >
+                <option value="default">Vali õpilane</option>
+                <option *ngFor="let student of studentsStore.students" [value]="student.ID">
+                  {{ student.firstName }} {{ student.lastName }}
+                </option>
+              </select>
+              <div class="form-group">
+                <label for="name" class="visually-hidden"
+                  >Sisesta treeningplaanile nimetus</label
+                >
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control"
+                  placeholder="Sisesta treeningplaanile nimetus"
+                />
+              </div>
+              <div class="form-group">
+                <label for="date" class="visually-hidden"
+                  >Sisesta treeningplaani kuupäev</label
+                >
+                <input
+                  type="date"
+                  formControlName="date"
+                  class="form-control"
+                  placeholder="Sisesta treeningplaani kuupäev"
+                />
+              </div>
+              <div class="form-group">
+                <label for="comment" class="visually-hidden"
+                  >Sisesta treeningule kommentaar või kirjeldus</label
+                >
+                <input
+                  type="text"
+                  formControlName="comment"
+                  class="form-control"
+                  placeholder="Sisesta treeningule kommentaar või kirjeldus"
+                />
+              </div>
+              <div class="form-group">
+                <button
+                  [disabled]="loading"
+                  class="w-100 btn btn-md btn-primary"
+                >
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  Salvesta
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+        <br />
+        <!--Klientide nimekiri -->
+
+        <div class="form-group">
+          <h3 class="h3 mb-3 fw-normal">Treeningplaanid</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Õpilane</th>
+                  <th>Nimi</th>
+                  <th>Kuupäev</th>
+                  <th>Kommentaar</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tr *ngFor="let trainingplan of trainingplanStore.trainingplans">
+                <td>{{ trainingplan.ID }}</td>
+                <td>{{ trainingplan.student_ID }}</td>
+                <td>{{ trainingplan.name }}</td>
+                <td>{{ trainingplan.date }}</td>
+                <td>{{ trainingplan.comment }}</td>
+                <td>
+                  <button
+                    class="btn btn-outline-info btn-sm"
+                    type="submit"
+                    role="button"
+                    (click)="readButton(trainingplan.ID)"
+                  >
+                    Vaata
+                  </button>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    type="submit"
+                    role="button"
+                    (click)="deleteButton(trainingplan.ID)"
+                    onclick="return confirm('Kas oled kindel?')"
+                  >
+                    Kustuta
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br />
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Eesnimi</th>
+                  <th>Perenimi</th>
+                  <th>E-mail</th>
+                  <th>Telefon</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let student of studentsStore.students">
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.phone }}</td>
+              </tr>
+            </table>
+            </div>
+
+          <div class="form-group">
+            <h3 class="h3 mb-3 fw-normal">Vaata valitud treeningplaani</h3>
+            <br />
+
+            <div class="table-responsive">
+              <table class="table table-striped table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>Õpilane</th>
+                    <th>Nimi</th>
+                    <th>Kuupäev</th>
+                    <th>Kommentaar</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr
+                  *ngFor="let trainingplan of trainingplanStore.oneTrainingplan"
+                >
+                  <td>{{ trainingplan.ID }}</td>
+                  <td>{{ trainingplan.student_ID }}</td>
+                  <td>{{ trainingplan.name }}</td>
+                  <td>{{ trainingplan.date }}</td>
+                  <td>{{ trainingplan.comment }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

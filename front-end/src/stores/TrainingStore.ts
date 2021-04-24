@@ -32,7 +32,7 @@ export class TrainingStore {
     comment: string
   ) => {
     try {
-      const response = await API.post('/students', {
+      const response = await API.post('/trainings', {
         startTime,
         endTime,
         date,
