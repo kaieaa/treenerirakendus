@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   public headerElements: NavElement[] = [
     { url: '/home', name: 'Avaleht' },
-    { url: '/students', name: 'Õpilased' },
+    { url: '/students', name: 'Kliendid' },
     { url: '/exercises', name: 'Harjutused' },
     { url: '/trainings', name: 'Treeningud' },
     { url: '/trainingplans', name: 'Treeningplaanid' },
