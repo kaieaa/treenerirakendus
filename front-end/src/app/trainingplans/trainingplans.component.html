@@ -50,53 +50,72 @@
 
             <form [formGroup]="trainingplanForm" (ngSubmit)="onSubmit()">
               <div class="form-group row">
-              <label for="student_ID" class="col-lg-4 col-form-label form-control-label"
+                <label
+                  for="student_ID"
+                  class="col-lg-4 col-form-label form-control-label"
                   >Vali õpilane</label
                 >
                 <div class="col-lg-8">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                formControlName="student_ID"
-              >
-                <option *ngFor="let student of studentsStore.students" [value]="student.ID">
-                  {{ student.firstName }} {{ student.lastName }}
-                </option>
-              </select></div>
-            </div>
-              <div class="form-group row">
-                <label for="name" class="col-lg-4 col-form-label form-control-label"
-                  >Sisesta nimetus</label
-                ><div class="col-lg-8">
-                <input
-                  type="text"
-                  formControlName="name"
-                  class="form-control"
-                  placeholder="Sisesta treeningplaanile nimetus"
-                />
-              </div></div>
-              <div class="form-group row">
-                <label for="date" class="col-lg-4 col-form-label form-control-label"
-                  >Vali kuupäev</label
-                ><div class="col-lg-8">
-                <input
-                  type="date"
-                  formControlName="date"
-                  class="form-control"
-                  placeholder="Sisesta treeningplaani kuupäev"
-                /></div>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    formControlName="student_ID"
+                  >
+                    <option
+                      *ngFor="let student of studentsStore.students"
+                      [value]="student.ID"
+                    >
+                      {{ student.firstName }} {{ student.lastName }}
+                    </option>
+                  </select>
+                </div>
               </div>
               <div class="form-group row">
-                <label for="comment" class="col-lg-4 col-form-label form-control-label"
+                <label
+                  for="name"
+                  class="col-lg-4 col-form-label form-control-label"
+                  >Sisesta nimetus</label
+                >
+                <div class="col-lg-8">
+                  <input
+                    type="text"
+                    formControlName="name"
+                    class="form-control"
+                    placeholder="Sisesta treeningplaanile nimetus"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  for="date"
+                  class="col-lg-4 col-form-label form-control-label"
+                  >Vali kuupäev</label
+                >
+                <div class="col-lg-8">
+                  <input
+                    type="date"
+                    formControlName="date"
+                    class="form-control"
+                    placeholder="Sisesta treeningplaani kuupäev"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  for="comment"
+                  class="col-lg-4 col-form-label form-control-label"
                   >Sisesta kommentaar</label
-                ><div class="col-lg-8">
-                <input
-                  type="text"
-                  formControlName="comment"
-                  class="form-control"
-                  placeholder="Sisesta treeningule kommentaar või kirjeldus"
-                /></div>
-              </div><br>
+                >
+                <div class="col-lg-8">
+                  <input
+                    type="text"
+                    formControlName="comment"
+                    class="form-control"
+                    placeholder="Sisesta treeningule kommentaar või kirjeldus"
+                  />
+                </div>
+              </div>
+              <br />
               <div class="form-group">
                 <button
                   [disabled]="loading"
@@ -117,115 +136,130 @@
         <br />
 
         <!--Harjutuste lisamine treeningplaani-->
+        <br />
+
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th>Vali</th>
+                <th>Nimi</th>
+                <th>Kirjeldus</th>
+                <th>Seeriate arv</th>
+                <th>Korduste arv</th>
+                <th>Korduste liik</th>
+                <th>Treeningvahend</th>
+                <th>Treeningvahendi kaal</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr *ngFor="let exercise of exercisesStore.exercises">
+              <td>
+                <div>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="checkboxNoLabel"
+                    value=""
+                    aria-label="..."
+                  />
+                </div>
+              </td>
+              <td>{{ exercise.name }}</td>
+              <td>{{ exercise.desc }}</td>
+              <td>{{ exercise.defaultSeries }}</td>
+              <td>{{ exercise.defaultReps }}</td>
+              <td>{{ exercise.defaultRepsType }}</td>
+              <td>{{ exercise.defaultEquip }}</td>
+              <td>{{ exercise.defaultWeight }}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <h3 class="h3 mb-3 fw-normal">Vaata valitud treeningplaani</h3>
           <br />
 
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead class="thead-dark">
                 <tr>
-                  <th>Vali</th>
+                  <th>ID</th>
+                  <th>Õpilane</th>
                   <th>Nimi</th>
-                  <th>Kirjeldus</th>
-                  <th>Seeriate arv</th>
-                  <th>Korduste arv</th>
-                  <th>Korduste liik</th>
-                  <th>Treeningvahend</th>
-                  <th>Treeningvahendi kaal</th>
+                  <th>Kuupäev</th>
+                  <th>Kommentaar</th>
                   <th></th>
                   <th></th>
                 </tr>
               </thead>
-              <tr *ngFor="let exercise of exercisesStore.exercises">
-                <td><div>
-                  <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                </div></td>
-                <td>{{ exercise.name }}</td>
-                <td>{{ exercise.desc }}</td>
-                <td>{{ exercise.defaultSeries }}</td>
-                <td>{{ exercise.defaultReps }}</td>
-                <td>{{ exercise.defaultRepsType }}</td>
-                <td>{{ exercise.defaultEquip }}</td>
-                <td>{{ exercise.defaultWeight }}</td>
+              <tr
+                *ngFor="let trainingplan of trainingplanStore.oneTrainingplan"
+              >
+                <td>{{ trainingplan.ID }}</td>
+                <td>{{ trainingplan.student_ID }}</td>
+                <td>{{ trainingplan.name }}</td>
+                <td>{{ trainingplan.date }}</td>
+                <td>{{ trainingplan.comment }}</td>
               </tr>
             </table>
-            </div>
-
-          <div class="form-group">
-            <h3 class="h3 mb-3 fw-normal">Vaata valitud treeningplaani</h3>
-            <br />
-
-            <div class="table-responsive">
-              <table class="table table-striped table-sm">
-                <thead class="thead-dark">
-                  <tr>
-                    <th>ID</th>
-                    <th>Õpilane</th>
-                    <th>Nimi</th>
-                    <th>Kuupäev</th>
-                    <th>Kommentaar</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tr
-                  *ngFor="let trainingplan of trainingplanStore.oneTrainingplan"
-                >
-                  <td>{{ trainingplan.ID }}</td>
-                  <td>{{ trainingplan.student_ID }}</td>
-                  <td>{{ trainingplan.name }}</td>
-                  <td>{{ trainingplan.date }}</td>
-                  <td>{{ trainingplan.comment }}</td>
-                </tr>
-              </table>
-            </div>
           </div>
-<!--Treeningplaanide nimekiri -->
+        </div>
+        <!--Treeningplaanide nimekiri -->
 
-<div class="form-group">
-  <h3 class="h3 mb-3 fw-normal">Treeningplaanid</h3>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead class="thead-dark">
-        <tr>
-          <th>ID</th>
-          <th>Õpilane</th>
-          <th>Nimi</th>
-          <th>Kuupäev</th>
-          <th>Kommentaar</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tr *ngFor="let trainingplan of trainingplanStore.trainingplans">
-        <td>{{ trainingplan.ID }}</td>
-        <td>{{ trainingplan.student_ID }}</td>
-        <td>{{ trainingplan.name }}</td>
-        <td>{{ trainingplan.date }}</td>
-        <td>{{ trainingplan.comment }}</td>
-        <td>
-          <button
-            class="btn btn-outline-info btn-sm"
-            type="submit"
-            role="button"
-            (click)="readButton(trainingplan.ID)"
-          >
-            Vaata
-          </button>
-        </td>
-        <td>
-          <button
-            class="btn btn-outline-danger btn-sm"
-            type="submit"
-            role="button"
-            (click)="deleteButton(trainingplan.ID)"
-            onclick="return confirm('Kas oled kindel?')"
-          >
-            Kustuta
-          </button>
-        </td>
-      </tr>
-    </table>
-  </div>
+        <div class="form-group">
+          <h3 class="h3 mb-3 fw-normal">Treeningplaanid</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Õpilane</th>
+                  <th>Nimi</th>
+                  <th>Kuupäev</th>
+                  <th>Kommentaar</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tr *ngFor="let trainingplan of trainingplanStore.trainingplans">
+                <td>{{ trainingplan.ID }}</td>
+                <td>{{ trainingplan.student_ID }}</td>
+                <td>{{ trainingplan.name }}</td>
+                <td>{{ trainingplan.date }}</td>
+                <td>{{ trainingplan.comment }}</td>
+                <td>
+                  <button
+                    class="btn btn-outline-info btn-sm"
+                    type="submit"
+                    role="button"
+                    (click)="readButton(trainingplan.ID)"
+                  >
+                    Vaata
+                  </button>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    type="submit"
+                    role="button"
+                    (click)="deleteButton(trainingplan.ID)"
+                    onclick="return confirm('Kas oled kindel?')"
+                  >
+                    Kustuta
+                  </button>
+                </td>
+                <td>
+                  <a routerLink="/trainingplans/exercises"
+                    ><button class="btn btn-outline-info btn-sm">
+                      Muuda
+                    </button></a
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </main>

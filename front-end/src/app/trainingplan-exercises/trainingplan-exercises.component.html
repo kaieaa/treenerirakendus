@@ -44,16 +44,15 @@
           </p>
         </div>
         <div class="row">
-          <div class="col-6">
             <br />
-            <h3 class="h3 mb-3 fw-normal">Lisa uus treeningplaan</h3>
+            <h3 class="h3 mb-3 fw-normal">Muuda treeningplaani harjutusi</h3>
 
             <form [formGroup]="trainingplanForm" (ngSubmit)="onSubmit()">
               <div class="form-group row">
-              <label for="student_ID" class="col-lg-4 col-form-label form-control-label"
+              <label for="student_ID" class="col-lg-3 col-form-label form-control-label"
                   >Vali õpilane</label
                 >
-                <div class="col-lg-8">
+                <div class="col-lg-9">
               <select
                 class="form-select"
                 aria-label="Default select example"
@@ -64,92 +63,57 @@
                 </option>
               </select></div>
             </div>
-              <div class="form-group row">
-                <label for="name" class="col-lg-4 col-form-label form-control-label"
-                  >Sisesta nimetus</label
-                ><div class="col-lg-8">
-                <input
-                  type="text"
-                  formControlName="name"
-                  class="form-control"
-                  placeholder="Sisesta treeningplaanile nimetus"
-                />
-              </div></div>
-              <div class="form-group row">
-                <label for="date" class="col-lg-4 col-form-label form-control-label"
-                  >Vali kuupäev</label
-                ><div class="col-lg-8">
-                <input
-                  type="date"
-                  formControlName="date"
-                  class="form-control"
-                  placeholder="Sisesta treeningplaani kuupäev"
-                /></div>
-              </div>
-              <div class="form-group row">
-                <label for="comment" class="col-lg-4 col-form-label form-control-label"
-                  >Sisesta kommentaar</label
-                ><div class="col-lg-8">
-                <input
-                  type="text"
-                  formControlName="comment"
-                  class="form-control"
-                  placeholder="Sisesta treeningule kommentaar või kirjeldus"
-                /></div>
-              </div><br>
-              <div class="form-group">
-                <button
-                  [disabled]="loading"
-                  class="w-100 btn btn-md btn-primary"
-                >
-                  <span
-                    *ngIf="loading"
-                    class="spinner-border spinner-border-sm mr-1"
-                  ></span>
-                  Salvesta
-                </button>
-              </div>
+            <div class="col"></div>
+            <div class="col"></div>
+              <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Vali</th>
+                      <th>Nimi</th>
+                      <th>Kirjeldus</th>
+                      <th>Seeriate arv</th>
+                      <th>Korduste arv</th>
+                      <th>Korduste liik</th>
+                      <th>Treeningvahend</th>
+                      <th>Treeningvahendi kaal</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let exercise of exercisesStore.exercises">
+                    <td><div>
+                      <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                    </div></td>
+                    <td>{{ exercise.name }}</td>
+                    <td>{{ exercise.desc }}</td>
+                    <td>{{ exercise.defaultSeries }}</td>
+                    <td>{{ exercise.defaultReps }}</td>
+                    <td>{{ exercise.defaultRepsType }}</td>
+                    <td>{{ exercise.defaultEquip }}</td>
+                    <td>{{ exercise.defaultWeight }}</td>
+                  </tr>
+                </table>
+                </div>
+                <div class="form-group">
+                  <button
+                    [disabled]="loading"
+                    class="w-100 btn btn-md btn-primary"
+                  >
+                    <span
+                      *ngIf="loading"
+                      class="spinner-border spinner-border-sm mr-1"
+                    ></span>
+                    Salvesta
+                  </button>
+                </div>
+
             </form>
           </div>
-          <div class="col"></div>
-          <div class="col"></div>
         </div>
         <br />
 
-        <!--Harjutuste lisamine treeningplaani-->
           <br />
-
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Vali</th>
-                  <th>Nimi</th>
-                  <th>Kirjeldus</th>
-                  <th>Seeriate arv</th>
-                  <th>Korduste arv</th>
-                  <th>Korduste liik</th>
-                  <th>Treeningvahend</th>
-                  <th>Treeningvahendi kaal</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tr *ngFor="let exercise of exercisesStore.exercises">
-                <td><div>
-                  <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                </div></td>
-                <td>{{ exercise.name }}</td>
-                <td>{{ exercise.desc }}</td>
-                <td>{{ exercise.defaultSeries }}</td>
-                <td>{{ exercise.defaultReps }}</td>
-                <td>{{ exercise.defaultRepsType }}</td>
-                <td>{{ exercise.defaultEquip }}</td>
-                <td>{{ exercise.defaultWeight }}</td>
-              </tr>
-            </table>
-            </div>
-
           <div class="form-group">
             <h3 class="h3 mb-3 fw-normal">Vaata valitud treeningplaani</h3>
             <br />
@@ -227,7 +191,6 @@
     </table>
   </div>
         </div>
-      </div>
     </main>
   </body>
 </html>
