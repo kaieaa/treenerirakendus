@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     { url: '/students', name: 'Kliendid' },
     { url: '/exercises', name: 'Harjutused' },
     { url: '/trainings', name: 'Treeningud' },
-    { url: '/trainingplans', name: 'Treeningplaanid' },
+    { url: '/trainingplans', name: 'Treeninguplaanid' },
   ];
 
   ngOnInit(): void {}
